@@ -8,26 +8,40 @@ class Result extends StatelessWidget {
 }
   String get resultphrase{
     String resulttext='You Answered All Questions!';
-    if(resultscore==30){
-      resulttext+="\nAnd You have an outstanding choice";
+    if(resultscore==50){
+      resulttext+="\nAnd all Answers are correct";
     }
-    else if(resultscore<30){
-      resulttext+="\nAnd You have an Excellent choice";
+    else if(resultscore<50 && resultscore>=40){
+      resulttext+="\nAnd Few answers are wrong!";
     }
     else{
-      resulttext+="\nAnd You have bad choice try again";
+      resulttext+="\n Your score is low Pls Try Again";
     }
     return resulttext;
   }
   @override
   Widget build(BuildContext context){
+    
     return Center(
+      
       child: Column(
+        
         children:<Widget>[
+          
       Text(resultphrase,
-      style: TextStyle(fontSize: 20,color: Color(0xFF000000),fontWeight: FontWeight.bold),
-      textAlign: TextAlign.center),
-      ElevatedButton(child:Text('Restart Quiz'),onPressed: tyFunctionWrapper,),
+      style: TextStyle(
+              fontWeight: FontWeight.w900,fontSize: 27,
+            ),
+          textAlign: TextAlign.center),
+      
+      ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(
+              Color.fromARGB(255, 42, 4, 80)),
+        ),
+        child:
+        Text('Restart Quiz',style: TextStyle(fontSize: 20, color: Colors.white),),
+        onPressed: tyFunctionWrapper,),
         ],
       ),
       );

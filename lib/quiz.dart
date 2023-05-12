@@ -30,5 +30,6 @@ class Quiz extends StatelessWidget {
         // Answer(_answerchosen, questions[2]['answers']),
       ],
     );
+    
   }
 }

@@ -27,16 +27,16 @@ class _MyAppState extends State<MyApp>{
 },
   {
 'questionText': 'Who wrote the Harry Potter book series?',
-'answers': [{'text': 'J.K. Rowling', 'score': 10},
+'answers': [{'text': 'Dan Brown', 'score': 8},
 {'text': 'Stephen King', 'score': 7},
 {'text': 'George R.R. Martin', 'score': 6},
-{'text': 'Dan Brown', 'score': 8}],
+{'text': 'J.K. Rowling', 'score': 10}],
 },
 
 {
 'questionText': 'What is the name of the highest mountain in the world?',
-'answers': [{'text': 'Mount Everest', 'score': 10},
-{'text': 'K2', 'score': 7},
+'answers': [{'text': 'K2', 'score': 7},
+{'text': 'Mount Everest', 'score': 10},
 {'text': 'Makalu', 'score': 6},
 {'text': 'Kangchenjunga', 'score': 8}],
 },
@@ -51,49 +51,10 @@ class _MyAppState extends State<MyApp>{
 
 {
 'questionText': 'What is the chemical symbol for gold?',
-'answers': [{'text': 'Au', 'score': 10},
+'answers': [{'text': 'Fe', 'score': 8},
 {'text': 'Ag', 'score': 7},
 {'text': 'Cu', 'score': 6},
-{'text': 'Fe', 'score': 8}],
-},
-{
-'questionText': 'What is the smallest planet in our solar system?',
-'answers': [{'text': 'Mercury', 'score': 10},
-{'text': 'Venus', 'score': 7},
-{'text': 'Mars', 'score': 6},
-{'text': 'Pluto', 'score': 8}]
-},
-
-{
-'questionText': 'Which country gifted the Statue of Liberty to the United States?',
-'answers': [{'text': 'France', 'score': 10},
-{'text': 'Spain', 'score': 6},
-{'text': 'Italy', 'score': 7},
-{'text': 'Russia', 'score': 8}]
-},
-
-{
-'questionText': 'What is the largest organ in the human body?',
-'answers': [{'text': 'Skin', 'score': 10},
-{'text': 'Liver', 'score': 7},
-{'text': 'Brain', 'score': 6},
-{'text': 'Heart', 'score': 8}],
-},
-
-{
-'questionText': 'What is the most widely spoken language in the world?',
-'answers': [{'text': 'Mandarin Chinese', 'score': 10},
-{'text': 'English', 'score': 7},
-{'text': 'Spanish', 'score': 6},
-{'text': 'Arabic', 'score': 8}],
-},
-
-{
-'questionText': 'Who painted the famous artwork "The Mona Lisa"?',
-'answers': [{'text': 'Leonardo da Vinci', 'score': 10},
-{'text': 'Pablo Picasso', 'score': 7},
-{'text': 'Vincent van Gogh', 'score': 6},
-{'text': 'Michelangelo', 'score': 8}],
+{'text': 'Au', 'score': 10}],
 },
     //questions=[]; this does not work if questions is a const value as it cannot be changed.
 ];
@@ -115,21 +76,47 @@ class _MyAppState extends State<MyApp>{
       print("No more questions!!");
     }
   }
+/*
+          title: Text(
+            'MY FIRST APP',
+            
 
+*/
   @override
-  Widget build(BuildContext context){
+ Widget build(BuildContext context){
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('My First App'),
-        ),
-        body: _questionindex < _questions.length
+        backgroundColor: Colors.white, // set the background color here
+       appBar: AppBar(
+  title: Text('GK Quiz App',
+   style: TextStyle(
+              fontWeight: FontWeight.w900,
+            ),
+          textAlign: TextAlign.center),
+  backgroundColor: Color.fromARGB(255, 47, 1, 94),// Color.fromARGB(255, 42, 4, 80)),
+),
+
+        body:
+        Container(
+          alignment: Alignment.center,
+          padding: EdgeInsets.all(5),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: NetworkImage(
+                  'https://e0.pxfuel.com/wallpapers/672/837/desktop-wallpaper-alone-broken-heart-boy.jpg'
+                  ),
+              fit: BoxFit.cover,
+            ),
+          ),
+
+       child:  _questionindex < _questions.length
             ? Quiz(
                 answerchosen: _answerchosen,
                 questionindex: _questionindex,
                 questions: _questions,
               )
             : Result(_totalscore,_resetQuiz),
+        ),
       ),
     );
   }
